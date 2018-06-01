@@ -1,0 +1,27 @@
+{
+  "name": "caitgameoflife",
+  "version": "1.0.0",
+  "description": "",
+  "main": "game.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "test --WatchAll"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "clear": "^0.1.0",
+    "jest": "^23.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mamaku-2018/conways.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/mamaku-2018/conways/issues"
+  },
+  "homepage": "https://github.com/mamaku-2018/conways#readme"
+}
