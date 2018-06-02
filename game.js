@@ -24,6 +24,8 @@ function gameStart () { // Where it all begins
   scanner()
 }
 
+let print = console.log(arr)
+
 // Live cell fewer than two live neighbors dies
 // Live cell with two or three live neighbors lives
 // Live cell with more than three live neighbors dies
@@ -76,48 +78,3 @@ module.exports = {
   lifeOrDeath,
   scanner
 }
-
-// function changer () {
-//   for (let i = 0; i < 3; i++) {
-//     for (let j = 0; j < 3; j++) {
-//       if (matrixArr[0][i][j] === 1) {
-
-//       } else {
-//         ()
-//       }
-//     }
-//   }
-// }
-
-// // checks second arr for alive cells
-// function arr1 () {
-//   for (let j = 0; j < 3; j++) {
-//     if (matrixArr[0][1][j] === 1) {
-//       checkSurrounds(0, 1, j)
-//     } else {
-//       arr2()
-//     }
-//   }
-// }
-
-// // checks third arr for alive cells
-// function arr2 () {
-//   for (let j = 0; j < 3; j++) {
-//     if (matrixArr[0][2][j] === 1) {
-//       checkSurrounds(0, 2, j)
-//     } else {
-//       arr3()
-//     }
-//   }
-// }
-
-// // checks forth arr for alive cells
-// function arr3 () {
-//   for (let j = 0; j < 3; j++) {
-//     if (matrixArr[0][3][j] === 1) {
-//       checkSurrounds(0, 3, j)
-//     } else {
-//       arr0()
-//     }
-//   }
-// }
