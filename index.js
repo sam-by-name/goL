@@ -8,35 +8,42 @@ let clear = require('clear')
 
 const x = 0
 
-const arr = [
-  [x, x, x, x, x, x, x, x, x, x, x, x],
-  [x, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, x, x, x, x, x, x, x, x, x, x, x]
-]
+// const arr = [
+//   [x, x, x, x, x, x, x, x, x, x, x, x],
+//   [x, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
+//   [x, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
+//   [x, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
+//   [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
+//   [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
+//   [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
+//   [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
+//   [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
+//   [x, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, x],
+//   [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
+//   [x, x, x, x, x, x, x, x, x, x, x, x]
+// ]
 
+const arr = [
+  [x, x, x, x, x],
+  [x, 0, 1, 0, x],
+  [x, 0, 1, 0, x],
+  [x, 0, 1, 0, x],
+  [x, x, x, x, x]
+]
 // checks first arr for alive cells
 let prints = 0
 
 function scanner (i, j, prints) {
-  for (let i = 1; i < 11; i++) {
-    for (let j = 1; j < 11; j++) {
+  for (let i = 1; i < 5; i++) {
+    for (let j = 1; j < 5; j++) {
       countSur(i, j)
     }
   }
   print()
-  // if (prints <= 5) {
-  //   prints += 1
-  //   scanner(prints)
-  // } else { return }
+  if (prints <= 5) {
+    prints += 1
+    scanner(prints)
+  }
 }
 
 // receives coordinates and checks all 8 surrounding cells
@@ -46,7 +53,7 @@ function countSur (y, j) {
     arr[y][j - 1], arr[y][j + 1],
     arr[y + 1][j - 1], arr[y + 1][j], arr[y + 1][j + 1]
   ]
-
+  newArr = JSON.parse(JSON.stringify(questionPool))
   const reducer = (accu, cur) => accu + cur
   let surrounds = surArr.reduce(reducer)
   console.log(surrounds)
@@ -54,24 +61,25 @@ function countSur (y, j) {
 }
 
 function lifeOrDeath (y, j, surrounds) {
-  if (j === 10) { //                                             If end of row
-    y += 1 //                                       go back to scanner and start on the next row
-  } else if ((arr[y][j] === 0) && (surrounds === 3)) { //        If cell is dead and surrounds are exactly 3
-    (arr[y][j] = 1) && (j += 1) //                cell is born / scanner starts on the next cell
-  } else if (surrounds < 2) { //                                 If cel has less than 2 around it
-    (arr[y][j] = 0) && (j += 1) //                cell ends itself due to loneliness / scanner starts on the next cell
+  print()
+
+  if ((arr[y][j] === 0) && (surrounds === 3)) { //        If cell is dead and surrounds are exactly 3
+    (arr[y][j] = 1) && (j += 1) //                        cell is born / scanner starts on the next cell
+  } else if ((surrounds < 2) || (surrounds > 3)) { //     If cel has less than 2 around it
+    (arr[y][j] = 0) && (j += 1) //                        cell ends itself due to loneliness / scanner starts on the next cell
   } else if ((arr[y][j] === 1) && (surrounds === (2 || 3))) { // If cell is alive and has 2/3 surroundsing friends
-    (arr[y][j] = 1) && (j += 1)//                 cell lives for another day / scanner starts on the next cell
-  } else if (surrounds > 3) { //                                 If cell has more than three neighbors,
-    (arr[y][j] = 0) && (j += 1) //                cell ends itself, depressed by lack of space / scanner starts on the next cell
+    (arr[y][j] = 1) && (j += 1)//                                cell lives for another day / scanner starts on the next cell
   }
+  // } else if (surrounds > 3) { //                                 If cell has more than three neighbors,
+  //   (arr[y][j] = 0) && (j += 1) //                cell ends itself, depressed by lack of space / scanner starts on the next cell
+  // }
 }
 
 function print () {
-  for (let i = 1; i < 11; i++) {
-    console.log(arr[i])
+  for (let f = 0; f < 5; f++) {
+    console.log(arr[f])
   }
-  //clear()
+  // clear()
 }
 
 function gameStart () { // Where it all begins
