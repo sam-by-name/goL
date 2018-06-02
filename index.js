@@ -10,9 +10,9 @@ const arr = [
   [x, x, x, x, x, x, x, x, x, x, x, x],
   [x, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
   [x, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
+  [x, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, x],
+  [x, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, x],
+  [x, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, x],
   [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
   [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
   [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
@@ -91,7 +91,6 @@ function print () {
     show(newArr[f])
   }
   clear()
-  time()
   show('\n')
 }
 
@@ -100,16 +99,6 @@ function show (a) {
 }
 
 gameStart()
-
-function time () {
-  let timeLeft = 10
-  let clock = setInterval(function () {
-    timeLeft--
-    if (timeLeft === 0) {
-      clearInterval(clock)
-    }
-  }, 1000)
-}
 
 module.exports = {
   gameStart,
