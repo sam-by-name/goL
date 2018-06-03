@@ -3,37 +3,9 @@
 // Live cell with more than three live neighbors dies
 // Dead cell with three live neighbors becomes a live cell
 
-// const board = require('./board.js')
+const arr = require('./board.js')
+const newArr = require('./boardShow.js')
 let clear = require('clear')
-const x = 0
-const arr = [
-  [x, x, x, x, x, x, x, x, x, x, x, x],
-  [x, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, x, x, x, x, x, x, x, x, x, x, x]
-]
-const newArr = [
-  [x, x, x, x, x, x, x, x, x, x, x, x],
-  [x, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, x],
-  [x, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
-  [x, x, x, x, x, x, x, x, x, x, x, x]
-]
 
 function gameStart () { // Where it all begins
   scanner()
